@@ -36,6 +36,22 @@ async function greet() {
     await getNum();
     await getNum();
   }
+
+  demo();  //This will start running demo() and log 6 random numbers, one every second.
+
+
+demo().then(() = > {
+	console.log("All numbers printed!");
+});   // This way, once all getNum() calls are done (after ~6 seconds), it logs "All numbers printed!"
+
+
+async function main() {
+	await demo();
+	console.log("Done with demo");   // inside another async function
+}
+
+main();
+
   
   h1 = document.querySelector("h1");
   function changeColor(color, delay) {
@@ -61,12 +77,14 @@ async function greet() {
       await changeColor("orange", 1000);
       await changeColor("blue", 1000);
       await changeColor("black", 1000);
-    } catch (err) {
+    }
+    catch (err) {
       console.log("error detected");
       console.log(err);
     }
     let a = 5;
-    console.log(a);
+    console.log(a);  //  whether the try block succeeds or fails, the final part always runs,
+    // So 5 will always be printed, even if there was an error.
   }
   
   demo1();
@@ -118,3 +136,19 @@ async function greet() {
   }
   
   getFacts();
+
+
+
+  //Testing Api requests Tools :
+
+Hoppscoth  // Visit https://hoppscotch.io
+
+postman   //  to use download both are identical to prefer hoppscoth
+
+
+https ://catfact.ninja/fact
+
+http://universities.hipolabs.com   // universities in world
+
+
+// http headers once look it
