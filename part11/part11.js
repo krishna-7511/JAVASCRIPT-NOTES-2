@@ -113,6 +113,50 @@ function hello() {
       console.log("promise was rejected s"+result);
     });
 
+    //another method for promise chaining multiple methods chatgpt
+
+    const getUser = () = > {
+      return new Promise((resolve, reject) = > {
+          setTimeout(() = > {
+              resolve({ userId: 1, username : "alice" });
+          }, 1000);
+      });
+  };
+  
+  const getUserPosts = user = > {
+      return new Promise((resolve, reject) = > {
+          setTimeout(() = > {
+              resolve(["Post 1", "Post 2", "Post 3"]);
+          }, 1000);
+      });
+  };
+  
+  const getPostDetails = posts = > {
+      return new Promise((resolve, reject) = > {
+          setTimeout(() = > {
+              resolve(posts.map(post = > `${post} - Details`));
+      }, 1000);
+  });
+      };
+  
+      // Chaining with arrow functions
+      getUser()
+          .then(user = > {
+          console.log("User:", user);
+          return getUserPosts("user");
+      })
+          .then(posts = > {
+          console.log("Posts:", posts);
+          return getPostDetails(posts);
+      })
+          .then(details = > {
+          console.log("Post Details:", details);
+      })
+          .catch (error = > {
+          console.error("Error:", error);
+      });
+  
+
 
 
   //  then and catch:

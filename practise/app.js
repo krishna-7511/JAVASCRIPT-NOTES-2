@@ -53,3 +53,71 @@ ul1.addEventListener("click",(event)=>{
         listitem.remove();
     }
 });
+
+
+//chatgpt for crud
+
+<script>
+let btn = document.querySelector("button");
+let ul = document.querySelector("ul");
+let inp = document.querySelector("input");
+
+btn.addEventListener("click", function() {
+if (inp.value.trim() == = "") return;
+
+let item = document.createElement("li");
+
+let span = document.createElement("span");
+span.innerText = inp.value;
+item.appendChild(span);
+
+// Delete Button
+let delbtn = document.createElement("button");
+delbtn.innerText = "Delete";
+delbtn.classList.add("delete");
+item.appendChild(delbtn);
+
+// Edit Button
+let editbtn = document.createElement("button");
+editbtn.innerText = "Edit";
+editbtn.classList.add("edit");
+item.appendChild(editbtn);
+
+ul.appendChild(item);
+inp.value = "";
+});
+
+ul.addEventListener("click", function(event) {
+let target = event.target;
+
+// Delete functionality
+if (target.classList.contains("delete")) {
+    let listItem = target.parentElement;
+    listItem.remove();
+}
+
+// Edit functionality
+if (target.classList.contains("edit")) {
+    let listItem = target.parentElement;
+    let span = listItem.querySelector("span");
+
+    // If already editing
+    if (target.innerText == = "Save") {
+        let input = listItem.querySelector("input");
+        span.innerText = input.value;
+        span.style.display = "inline";
+        input.remove();
+        target.innerText = "Edit";
+    }
+    else {
+        // Switch to editing mode
+        let input = document.createElement("input");
+        input.type = "text";
+        input.value = span.innerText;
+        span.style.display = "none";
+        listItem.insertBefore(input, target);
+        target.innerText = "Save";
+    }
+}
+});
+< / script>
