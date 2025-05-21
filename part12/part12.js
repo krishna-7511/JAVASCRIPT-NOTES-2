@@ -40,7 +40,7 @@ async function greet() {
   demo();  //This will start running demo() and log 6 random numbers, one every second.
 
 
-demo().then(() = > {
+demo().then(() => {
 	console.log("All numbers printed!");
 });   // This way, once all getNum() calls are done (after ~6 seconds), it logs "All numbers printed!"
 
@@ -95,24 +95,24 @@ main();
   
   // API call by promises
   
-  // fetch(url) // return promise in the form of response
-  //   .then((response) => {
-  //     console.log(response);
-  //     return response.json();
-  //   })
-  //   .then((data) => {
-  //     console.log(data.fact);
-  //     return fetch(url);
-  //   })
-  //   .then((response)=>{
-  //     return response.json();
-  //   })
-  //   .then((data2)=>{
-  //     console.log(data2.fact);
-  //   })
-  //   .catch((err) => {
-  //     console.log("ERROR - ", err);
-  //   });
+  fetch(url)      // return promise in the form of response
+    .then((response) => {
+      console.log(response);
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data.fact);
+      return fetch(url);
+    })
+    .then((response)=>{
+      return response.json();
+    })
+    .then((data2)=>{
+      console.log(data2.fact);
+    })
+    .catch((err) => {
+      console.log("ERROR - ", err);
+    });
   
   
   // API call by async function
@@ -148,7 +148,7 @@ postman   //  to use download both are identical to prefer hoppscoth
 
 https ://catfact.ninja/fact
 
-http://universities.hipolabs.com   // universities in world
+https: //universities.hipolabs.com   // universities in world
 
 
 // http headers once look it

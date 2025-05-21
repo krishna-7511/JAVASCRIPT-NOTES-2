@@ -29,7 +29,7 @@ function hello() {
   console.log("Helloooo...");
   
   // Callback Hell
-  let h1 = document.querySelector("h1");
+   let h1 = document.querySelector("h1");
   function changeColor(color, delay) {
     return new Promise((resolve,reject)=>{
     setTimeout(() => {
@@ -52,6 +52,9 @@ function hello() {
   .then(()=>{
     console.log("green was completed");
   })
+   .catch((err) => {
+          console.error("Error:", err);
+        });
   
   
   // Previous call data
@@ -62,28 +65,38 @@ function hello() {
   // });
   
   // Promises
-  // function saveDB(data,sucess,failure){
-  //     let internetSpeed = Math.floor(Math.random()*10)+1;
-  //     if(internetSpeed > 4){
-  //         sucess();
-  //     }
-  //     else{
-  //         failure();
-  //     }
-  // }
   
-  // saveDB("apna college",()=>{
-  //     console.log("your data was saved");
-  //     saveDB("prajwal",()=>{
-  //         console.log('your data2 saved');
-  //     },()=>{
-  //         console.log('weak connection, data2 not saved');
-  //     })
-  // },()=>{
-  //     console.log("weak connection. data not saved");
-  // });
+        // Step 1: Define the function that simulates saving to a database
+function saveDB(data, success, failure) {
+    // Step 2: Simulate internet speed randomly from 1 to 10
+    let internetSpeed = Math.floor(Math.random() * 10) + 1;
+
+    // Step 3: Check if speed is good enough (more than 4)
+    if (internetSpeed > 4) {
+        success(); // call success callback
+    } else {
+        failure(); // call failure callback
+    }
+}
+
+// Step 4: Call saveDB with data and callback functions
+saveDB("apna college", () => {
+    console.log("your data was saved");
+
+    // Step 5: Save another piece of data after first one is successful
+    saveDB("prajwal", () => {
+        console.log("your data2 saved");
+    }, () => {
+        console.log("weak connection, data2 not saved");
+    });
+
+}, () => {
+    console.log("weak connection. data not saved");
+});
+
   
-  function saveDB(data) {
+  
+function saveDB(data) {
     return new Promise((resolve, reject) => {
       let internetSpeed = Math.floor(Math.random() * 10) + 1;
       if (internetSpeed > 4) {
@@ -109,10 +122,9 @@ function hello() {
     .then((result)=>{
       console.log("data 3: promise was resolved "+result);
     })
-    .catch((result) => {
-      console.log("promise was rejected s"+result);
-    });
-
+   .catch((error) => {
+    console.log("promise was rejected: " + error);
+  });
     //another method for promise chaining multiple methods chatgpt
 
     const getUser = () = > {
@@ -161,6 +173,19 @@ function hello() {
 
   //  then and catch:
   let promise = new Promise((resolve, reject) => {
-    reject("Error!");
+  reject("Error!");
 });
+
+promise
+  .then((result) => {
+    console.log("Success:", result);
+  })
+  .catch((error) => {
+    console.error("Caught Error:", error);
+  });
+
+
+  //.then() handles successful resolution of the promise.
+
+//.catch() handles the rejection or errors.
 
